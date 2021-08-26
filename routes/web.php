@@ -13,13 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.admin');
-});
-
-Route::get('register', function () {
-    return view('auth.register');
-});
+Route::get('/', 'AuthController@index');
+Route::get('register', 'AuthController@register');
+Route::post('register', 'AuthController@doRegister');
+Route::post('login', 'AuthController@doLogin');
+Route::get('dashboard', 'DashboardController@index');
+Route::get('logout', 'AuthController@logout');
 
 Route::resource('user', 'UserController');
 Route::resource('role', 'RoleController');

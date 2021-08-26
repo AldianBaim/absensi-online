@@ -56,7 +56,7 @@ class UserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect('/user')->with('message', 'User berhasil ditambahkan!');
+        return redirect('/user')->with('message', 'User has been added!');
     }
 
     /**
@@ -99,7 +99,7 @@ class UserController extends Controller
             'address' => $request->address,
             'role_id' => $request->role_id,
         ]);
-        return redirect('user')->with('message', 'User berhasil diupdate!');
+        return redirect('user')->with('message', 'User has been updated!');
     }
 
     /**
@@ -111,6 +111,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::where('id', $id)->delete();
-        return redirect('user')->with('message', 'User berhasil dihapus!');
+        return redirect('user')->with('message', 'User has been deleted!');
     }
 }

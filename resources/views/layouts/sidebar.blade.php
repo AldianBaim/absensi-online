@@ -10,8 +10,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ (request()->segment(1) == 'dashboard') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -38,13 +38,13 @@
             <span>Attendance</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
+    @if(session('role_id') == 1)
     <li class="nav-item {{ (request()->segment(1) == 'role') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('role') }}">
             <i class="fas fa-fw fa-lock"></i>
             <span>Roles</span></a>
     </li>
-
+    @endif
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ (request()->segment(1) == 'concession') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('concession') }}">
@@ -57,6 +57,15 @@
         <a class="nav-link" href="{{ url('salary') }}">
             <i class="fas fa-fw fa-dollar-sign"></i>
             <span>Salary</span></a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item {{ (request()->segment(1) == 'salary') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('logout') }}">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Logout</span></a>
     </li>
 
     <!-- Divider -->
