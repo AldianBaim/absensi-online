@@ -15,7 +15,10 @@ class ConcessionController extends Controller
      */
     public function index()
     {
-        $concessions = Concession::all();
+        if (!session()->has('username')) {
+            return back();
+        }
+        $concessions = Concession::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.concession.index', compact('concessions'));
     }
 

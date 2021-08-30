@@ -3,6 +3,8 @@
 @section('content')
 
 <!-- Page Heading -->
+<a href="{{ url('role') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back</a>
+
 <h1 class="h3 m-4 text-gray-800">Add new role</h1>
 
 <!-- DataTales Example -->

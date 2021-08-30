@@ -9,6 +9,12 @@ Route::get('user/home', 'user\HomeController@index');
 Route::get('user/logout', 'user\AuthController@logout');
 Route::get('user/about', 'user\HomeController@about');
 Route::get('user/guide', 'user\HomeController@guide');
+Route::get('user/concession', 'user\HomeController@concession');
+Route::post('user/concession', 'user\HomeController@store_concession');
+Route::get('user/salary', 'user\HomeController@show_salary');
+Route::get('user/history', 'user\HomeController@show_history');
+Route::get('user/attendance', 'user\HomeController@attendance');
+Route::post('/doAttendance', 'user\HomeController@do_attendance');
 
 /** Route for backend */
 Route::get('/admin', 'AuthController@index');

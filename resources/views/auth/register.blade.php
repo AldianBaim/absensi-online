@@ -9,6 +9,7 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
+                            <img src="https://d17ivq9b7rppb3.cloudfront.net/original/event/codepolitan_x_here_technologies_boost_your_android_app_performance_with_jetpack_and_utilize_here_maps_api_logo_071119135400.png" width="120" alt="">
                             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                         </div>
                         <form class="user" method="POST" action="{{ url('register') }}">
@@ -58,11 +59,11 @@
                             </button>
                         </form>
                         <hr>
-                        <div class="text-center">
+                        <!-- <div class="text-center">
                             <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
+                        </div> -->
                         <div class="text-center">
-                            <a class="small" href="{{ url('/') }}">Already have an account? Login!</a>
+                            <a class="small" href="{{ url('/admin') }}">Already have an account? Login!</a>
                         </div>
                     </div>
                 </div>

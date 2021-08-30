@@ -9,7 +9,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if (!session()->has('username')) {
+            return back();
+        }
         $users = DB::table('users')->count();
-        return view('admin.dashboard', compact('users'));
+        $concessions = DB::table('concession')->count();
+        $attendances = DB::table('attendance')->count();
+        $roles = DB::table('roles')->count();
+        return view('admin.dashboard', compact('users', 'concessions', 'attendances', 'roles'));
     }
 }

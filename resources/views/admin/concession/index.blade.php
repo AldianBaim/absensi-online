@@ -4,8 +4,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Management concession</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+<p class="mb-4">Disini fitur untuk menambahkan, menyunting, dan menghapus data izin pengguna.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -51,7 +50,9 @@
                     @endforeach
                 </tbody>
             </table>
-
+            <div class="d-flex justify-content-center">
+                {{ $concessions->links() }}
+            </div>
         </div>
     </div>
 </div>

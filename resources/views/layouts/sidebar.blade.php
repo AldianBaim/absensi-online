@@ -62,7 +62,7 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item {{ (request()->segment(1) == 'salary') ? 'active' : '' }}">
+    <li class="nav-item">
         <a class="nav-link" href="{{ url('logout') }}">
             <i class="fas fa-fw fa-sign-out-alt"></i>
             <span>Logout</span></a>

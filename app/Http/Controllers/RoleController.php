@@ -14,6 +14,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+        if (!session()->has('username')) {
+            return back();
+        }
         $roles = Role::all();
         return view('admin.role.index', compact('roles'));
     }

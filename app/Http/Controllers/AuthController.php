@@ -22,7 +22,7 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|min:6',
             'repeat_password' => 'required_with:password|same:password',
             'address' => 'required'
@@ -34,10 +34,10 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => password_hash($request->password, PASSWORD_DEFAULT),
             'address' => $request->address,
-            'role_id' => 3,
+            'role_id' => 1,
         ]);
 
-        return redirect('/')->with('success', 'New user has been created!');
+        return redirect('/admin')->with('success', 'New user has been created!');
     }
 
     public function doLogin(Request $request)
@@ -55,10 +55,10 @@ class AuthController extends Controller
                 $request->session()->put('role_id', $user->role_id);
                 return redirect('dashboard')->with('message', 'Welcome <strong>' . $user->name . '</strong>');
             } else {
-                return redirect('/')->with('message', 'Wrong password!');
+                return redirect('/admin')->with('message', 'Wrong password!');
             }
         } else {
-            return redirect('/')->with('message', 'Email not found!');
+            return redirect('/admin')->with('message', 'Email not found!');
         }
     }
 
@@ -66,6 +66,6 @@ class AuthController extends Controller
     {
         session()->forget('username');
         session()->forget('role_id');
-        return redirect('/')->with('success', 'You have been logout!');
+        return redirect('/admin')->with('success', 'You have been logout!');
     }
 }

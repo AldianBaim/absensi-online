@@ -24,6 +24,7 @@ class AuthController extends Controller
 
         if (isset($user)) {
             if (password_verify($request->password, $user->password)) {
+                $request->session()->put('user_id', $user->id);
                 $request->session()->put('username', $user->name);
                 return redirect('user/home');
             } else {

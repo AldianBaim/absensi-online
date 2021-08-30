@@ -45,10 +45,13 @@
                     </select>
                 </div>
                 <div class="col-md-6 mt-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">Rp</div>
+                    <label for="inlineFormInputGroupUsername">Amount</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Rp</div>
+                        </div>
+                        <input type="text" name="amount" class="form-control">
                     </div>
-                    <input type="number" name="amount" class="form-control" id="inlineFormInputGroupUsername">
                     @error('amount')
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

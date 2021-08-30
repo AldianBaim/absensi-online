@@ -4,8 +4,7 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Management attendance</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+<p class="mb-4">Disini fitur untuk menambahkan, menyunting, dan menghapus data absen pengguna.</p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -18,9 +17,9 @@
             </button>
         </div>
         @endif
-        <div class="text-right">
+        <!-- <div class="text-right">
             <a href="{{ url('attendance/create') }}" class="btn btn-success m-2"> <i class="fas fa-plus mr-1"></i> New attendance</a>
-        </div>
+        </div> -->
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -51,6 +50,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+                {{ $attendances->links() }}
+            </div>
         </div>
     </div>
 </div>

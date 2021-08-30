@@ -15,7 +15,10 @@ class SalaryController extends Controller
      */
     public function index()
     {
-        $salaries = Salary::all();
+        if (!session()->has('username')) {
+            return back();
+        }
+        $salaries = Salary::orderBy('created_at', 'desc')->get();
         return view('admin.salary.index', compact('salaries'));
     }
 
