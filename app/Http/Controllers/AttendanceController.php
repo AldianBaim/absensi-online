@@ -26,6 +26,9 @@ class AttendanceController extends Controller
      */
     public function create()
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $users = User::all();
         return view('admin.attendance.create', compact('users'));
     }
@@ -38,6 +41,9 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $request->validate([
             'user_id' => 'required',
             'present_at' => 'required',
@@ -73,6 +79,9 @@ class AttendanceController extends Controller
      */
     public function edit($id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $users = User::all();
         $attendance = Attendance::find($id);
         return view('admin.attendance.edit', compact('attendance', 'users'));
@@ -87,6 +96,9 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $request->validate([
             'user_id' => 'required',
             'present_at' => 'required',
@@ -113,6 +125,9 @@ class AttendanceController extends Controller
      */
     public function destroy($id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $attendance = Attendance::find($id);
         $user = User::find($attendance->user_id);
         Attendance::where('id', $id)->delete();

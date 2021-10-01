@@ -73,7 +73,6 @@
                 $("#msg").html("<div class='alert alert-danger'>You are out of range! <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>")
             } else {
                 let user_id = $("#user_id").val();
-                console.log(user_id);
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -86,8 +85,11 @@
                     },
                     cache: false,
                     success: function(data) {
-                        console.log(data);
+                        if(data.status == true) {
+                        $("#msg").html("<div class='alert alert-warning'>" + data.message + " <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>")
+                        } else {
                         $("#msg").html("<div class='alert alert-success'>" + data.message + " <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>")
+                        }
                     }
                 })
             }

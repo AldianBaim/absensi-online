@@ -3,9 +3,12 @@
 @section('content')
 
 <!-- Page Heading -->
+@if(session('role_id') == 1)
 <h1 class="h3 mb-2 text-gray-800">Management attendance</h1>
-<p class="mb-4">Disini fitur untuk menambahkan, menyunting, dan menghapus data absen pengguna.</p>
-
+<p class="mb-4">Disini fitur untuk menyunting dan menghapus data absen pengguna.</p>
+@else 
+<h1 class="h3 mb-2 text-gray-800">List Attendance</h1>
+@endif
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-body">
@@ -28,7 +31,9 @@
                         <th>Name</th>
                         <th>Present at</th>
                         <th>Description</th>
+                        @if(session('role_id') !== 3)
                         <th>Action</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +43,7 @@
                         <td>{{ $attendance->user->name }}</td>
                         <td>{{ date('D, d F Y', strtotime($attendance->present_at)) }}</td>
                         <td>{{ $attendance->description }}</td>
+                        @if(session('role_id') !== 3)
                         <td>
                             <a href="{{ url('attendance/' . $attendance->id . '/edit') }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                             <form action="{{ url('attendance/' . $attendance->id) }}" method="POST" class="d-inline">
@@ -46,6 +52,7 @@
                                 <button type="submit" onclick="return confirm('Apakah anda yakin akan dihapus?')" class="bg-danger text-white" style="border: 0px"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

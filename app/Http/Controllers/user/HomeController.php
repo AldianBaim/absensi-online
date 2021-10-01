@@ -92,30 +92,30 @@ class HomeController extends Controller
 
     public function do_attendance(Request $request)
     {
-        // $attendance_status = Attendance::where('user_id', $request->user_id)->get();
-        // // return response(['user' => $attendance_status]);
-        // if (isset($attendance_status)) {
-        //     if ($attendance_status->present_at == Carbon::now()) {
-        //         return response([
-        //             'message' => 'Anda sudah absen hari ini!'
-        //         ]);
-        //     } else {
-        // Attendance::create([
-        //     'user_id' => $request->user_id,
-        //     'present_at' => Carbon::now(),
-        //     'description' => 'Hadir',
-        //     'created_at' => Carbon::now(),
-        // ]);
+        $attendance_status = Attendance::where('user_id', $request->user_id)->first();
+        if ($attendance_status == null) {
+            Attendance::create([
+                'user_id' => $request->user_id,
+                'present_at' => Carbon::now(),
+                'description' => 'Hadir',
+                'created_at' => Carbon::now(),
+            ]);
 
-        return response()->json([
-            "user_id" => $request->user_id,
-            "message" => "Thank you for your attendance!"
-        ]);
-        //     }
-        // } else {
-        //     return response([
-        //         'message' => 'User tidak terdaftar!'
-        //     ]);
-        // }
+            return response()->json([
+                "user_id" => $request->user_id,
+                "message" => "Thank you for your attendance!",
+                "status"  => false
+            ]);
+        } else {
+            $present = substr($attendance_status->present_at, 0, 10);
+            $today = substr(today(), 0, 10);
+
+            if ($present == $today) {
+                return response([
+                    'message'  => 'Anda sudah absen hari ini!',
+                    'status'   => true
+                ]);
+            }
+        }
     }
 }

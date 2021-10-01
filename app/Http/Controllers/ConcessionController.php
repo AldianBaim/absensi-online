@@ -29,6 +29,9 @@ class ConcessionController extends Controller
      */
     public function create()
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $users = User::all();
         return view('admin.concession.create', compact('users'));
     }
@@ -41,6 +44,9 @@ class ConcessionController extends Controller
      */
     public function store(Request $request)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $request->validate([
             'description' => 'required',
         ]);
@@ -76,6 +82,9 @@ class ConcessionController extends Controller
      */
     public function edit($id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $users = User::all();
         $concession = Concession::find($id);
         return view('admin.concession.edit', compact('concession', 'users'));
@@ -90,6 +99,9 @@ class ConcessionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $request->validate([
             'description' => 'required',
         ]);
@@ -114,6 +126,9 @@ class ConcessionController extends Controller
      */
     public function destroy($id)
     {
+        if (session('role_id') == 3) {
+            abort(404);
+        }
         $concession = Concession::find($id);
         $user = User::find($concession->user->id);
         Concession::where('id', $id)->delete();

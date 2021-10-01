@@ -42,9 +42,9 @@
                 </div>
                 <div class="col-md-6 mt-2">
                     <label for="">Role</label>
-                    <select name="role_id" id="" class="form-control">
+                    <select name="role_id" class="form-control">
                         <option value="1">Super admin</option>
-                        <option value="2">Staff</option>
+                        <option value="2">Staff HRD</option>
                         <option value="3">Pimpinan</option>
                         <option value="4">Karyawan</option>
                     </select>

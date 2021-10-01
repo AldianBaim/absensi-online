@@ -23,7 +23,7 @@
     <div class="sidebar-heading">
         Management
     </div>
-
+    @if(session('role_id') == 1)
     <!-- Nav Item - Charts -->
     <li class="nav-item {{ (request()->segment(1) == 'user') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('user') }}">
@@ -38,26 +38,50 @@
             <span>Attendance</span></a>
     </li>
 
-    @if(session('role_id') == 1)
+    
     <li class="nav-item {{ (request()->segment(1) == 'role') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('role') }}">
             <i class="fas fa-fw fa-lock"></i>
             <span>Roles</span></a>
     </li>
-    @endif
-    <!-- Nav Item - Tables -->
     <li class="nav-item {{ (request()->segment(1) == 'concession') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('concession') }}">
             <i class="fas fa-fw fa-edit"></i>
             <span>Concession</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
     <li class="nav-item {{ (request()->segment(1) == 'salary') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('salary') }}">
             <i class="fas fa-fw fa-dollar-sign"></i>
             <span>Salary</span></a>
     </li>
+    @endif
+
+    @if(session('role_id') == 2)
+    <li class="nav-item {{ (request()->segment(1) == 'salary') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('salary') }}">
+            <i class="fas fa-fw fa-dollar-sign"></i>
+            <span>Salary</span></a>
+    </li>
+    <li class="nav-item {{ (request()->segment(1) == 'attendance') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('attendance') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Report Attendance</span></a>
+    </li>
+    @endif
+
+    @if(session('role_id') == 3)
+    <li class="nav-item {{ (request()->segment(1) == 'attendance') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('attendance') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Report Attendance</span></a>
+    </li>
+    <li class="nav-item {{ (request()->segment(1) == 'concession') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('concession') }}">
+            <i class="fas fa-fw fa-edit"></i>
+            <span>Report Concession</span></a>
+    </li>
+    @endif
 
     <hr class="sidebar-divider d-none d-md-block">
 
